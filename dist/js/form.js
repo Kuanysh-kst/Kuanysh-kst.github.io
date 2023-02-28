@@ -10,12 +10,24 @@ form.addEventListener("submit", (e) => {
 
   let my_text = `Resutl is:%0A - Text1: ${text1} - Text2: ${text2}`;
 
-  // let chat_id = 928437440;
-  let url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${my_text}/`;
+  fetch("chat_id")
+    .then(response => response.json())
+    .then(chat_id => {
+      let url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${my_text}/`;
 
-  let api = new  XMLHttpRequest();
-  api.open("GET", url, true);
-  api.send();
+      let api = new  XMLHttpRequest();
+      api.open("GET", url, true);
+      api.send();
+
+      console.log("Message successfully");
+    });
+
+  // // let chat_id = 928437440;
+  // let url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${my_text}/`;
+
+  // let api = new  XMLHttpRequest();
+  // api.open("GET", url, true);
+  // api.send();
 
   console.log("Message successfully");
 });
